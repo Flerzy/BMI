@@ -130,7 +130,12 @@
         const categ = (a,b) =>{
             let BMI = Math.round(a/((b/100)**2) * 100) / 100
             BMITEXT.innerText = BMI
-            if (BMI < 18.5){
+            console.log(BMI);
+            if (typeof(BMI) != Number || BMI == 0){
+                CATEGTEXT.innerText = "Helytelen adatok"
+                BMITEXT.innerText = ""
+            }
+            else if (BMI < 18.5){
             CATEGTEXT.innerText = "UNDERWEIGHT👻"
             }
             else if(BMI >= 18.5 && BMI <= 24.9){
