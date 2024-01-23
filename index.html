@@ -5,36 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI calculator</title>
     <style>
+        *{
+            color: white;
+        }
         body{
-            background-color: black;
+            background-color: #231123;
         }
         .container{
             width: 500px;
-            height: 400px;
-            background-color: rgb(10, 10, 67);
+            height: 500px;
+            background-color: #372554;
             margin: 0 auto;
+            border-radius: 20px;
         }
         h1{
             text-align: center;
-            color: white;
+            color: #7C9EB2;
+            font-weight: bold;
         }
-        label{
-            color: rgb(63, 63, 255);
+        h2{
+            text-align: center;
+        }
+        .label{
+            color: #7C9EB2;
+            font-size: larger;
+            font-weight: bold;
+            
         }
         .inputok{
             width: 80%;
-            height: 40%;
+            height: 250px;
             margin: 0 auto;
+        }
+        button{
+            color: white;
+            width: 40%;
+            height: 100%;
+            border-radius: 20px;
+            border-color: #231123;
+            border-width: 3px;
+            margin: 0 auto;
+
+            background-color: #52528C;
+            
         }
         .buttonok{
             width: 80%;
             height: 10%;
             margin: 0 auto;
+            display: flex;
         }
         input{
-            width: 80%;
-            height: 20%;
+            display: block;
+            border-radius: 10px;
+            border-color: #231123;
+            border-width: 3px;
+            background-color: #7C9EB2;
+            
+
+            color: black;
+            width: 50%;
+            height: 40px;
+            margin: 0 auto;
             margin-top: 5%;
+        }
+        input::placeholder{
+            color: black;
+        }
+        .eredmeny{
+            text-align: center;
         }
     </style>
 </head>
@@ -42,27 +81,49 @@
     <div class="container">
         <h1>BMI calculator</h1>
         <div class="inputok">
-            <label for="Magasság">Height</label>
-            <input id="height" type="number" name="Magasság" placeholder="Height(cm)"><br>
-            <label for="Súly">Weight</label>
-            <input id="weight" type="number" name="Súly" placeholder="Weight(kg)"><br>
+            <h2 class="label">Height</h2>
+            <input id="height" type="number" name="Magasság" placeholder="Height(cm)">
+            <h2 class="label">Weight</h2>
+            <input id="weight" type="number" name="Súly" placeholder="Weight(kg)">
 
 
 
-            
+
         </div>
         <div class="buttonok" onclick="fire(event.target)">
                 <button id="calc">Calculate</button>
                 <button id="clear">Clear</button>
         </div>
         <div class="eredmeny">
-            <p id="BMI"></p>
-            <p id="kateg"></p>
+            <h2 id="BMI"></h2>
+            <h2 id="kateg"></h2>
         </div>
     </div>
     <script>
+        let BMITEXT = document.querySelector("#BMI")
+        let CATEGTEXT = document.querySelector("#kateg")
         const categ = (a,b) =>{
-            let BMI = a/((b/100)**2)
+            let BMI = Math.round(a/((b/100)**2) * 100) / 100
+            BMITEXT.innerText = BMI
+            if (BMI < 18.5){
+            CATEGTEXT.innerText = "UNDERWEIGHT"
+            }
+            else if(BMI >= 18.5 && BMI <= 24.9){
+                CATEGTEXT.innerText = "NORMAL"
+
+            }
+            else if(BMI >= 25 && BMI <= 29.9){
+                CATEGTEXT.innerText = "OVERWEIGHT"
+
+            }
+            else if(BMI >= 30 && BMI <= 34.9){
+                CATEGTEXT.innerText = "OBESE"
+
+            }
+            else if(BMI >= 35){
+                CATEGTEXT.innerText = "EXTREMELY OBESE"
+
+            }
 
         }
         const fire = (func) =>{
@@ -74,6 +135,8 @@
             if (func.innerText == "Clear"){
                 weight.value = ""
                 height.value = ""
+                BMITEXT.innerText = ""
+                CATEGTEXT.innerText = ""
             }
             else if(func.innerText = "Calculate"){
                 let weightval  =+ weight.value
