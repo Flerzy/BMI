@@ -7,16 +7,25 @@
     <style>
         *{
             color: white;
+            
         }
         body{
             background-color: #231123;
         }
+        @keyframes containercucc {
+            0% {width: 500px;height: 500px;}
+            50% {width: 600px;height: 600px;}
+            100% {width: 500px;height: 500px;}
+
+        }
+
         .container{
             width: 500px;
             height: 500px;
             background-color: #372554;
             margin: 0 auto;
             border-radius: 20px;
+            animation: containercucc 1s;
         }
         h1{
             text-align: center;
@@ -37,6 +46,12 @@
             height: 250px;
             margin: 0 auto;
         }
+        @keyframes buttoncucc {
+            0% {width: 40%;height: 100%;}
+            50% {width: 60%;height: 120%;}
+            100% {width: 40%;height: 100%;}
+
+        }
         button{
             color: white;
             width: 40%;
@@ -45,8 +60,13 @@
             border-color: #231123;
             border-width: 3px;
             margin: 0 auto;
-
+            animation: buttoncucc 1s ;
+            
             background-color: #52528C;
+        }
+        button:hover{
+            width: 50%;height: 110%;
+            background-color: #626292;
             
         }
         .buttonok{
@@ -71,6 +91,11 @@
         }
         input::placeholder{
             color: black;
+        }
+        input:hover{
+            width: 60%;
+            height: 50px;
+
         }
         .eredmeny{
             text-align: center;
@@ -106,22 +131,22 @@
             let BMI = Math.round(a/((b/100)**2) * 100) / 100
             BMITEXT.innerText = BMI
             if (BMI < 18.5){
-            CATEGTEXT.innerText = "UNDERWEIGHT"
+            CATEGTEXT.innerText = "UNDERWEIGHT👻"
             }
             else if(BMI >= 18.5 && BMI <= 24.9){
-                CATEGTEXT.innerText = "NORMAL"
+                CATEGTEXT.innerText = "NORMAL😎"
 
             }
             else if(BMI >= 25 && BMI <= 29.9){
-                CATEGTEXT.innerText = "OVERWEIGHT"
+                CATEGTEXT.innerText = "OVERWEIGHT😀"
 
             }
             else if(BMI >= 30 && BMI <= 34.9){
-                CATEGTEXT.innerText = "OBESE"
+                CATEGTEXT.innerText = "OBESE😟"
 
             }
             else if(BMI >= 35){
-                CATEGTEXT.innerText = "EXTREMELY OBESE"
+                CATEGTEXT.innerText = "EXTREMELY OBESE💀"
 
             }
 
