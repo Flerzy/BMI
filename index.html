@@ -131,8 +131,8 @@
         const categ = (a,b) =>{
             let BMI = Math.round(a/((b/100)**2) * 100) / 100
             BMITEXT.innerText = BMI
-            console.log(BMI);
-            if (typeof(BMI) != Number || BMI == 0){
+            console.log(BMI, typeof(BMI));
+            if (typeof(BMI) != "number" || BMI == 0 || BMI == Infinity){
                 CATEGTEXT.innerText = "Helytelen adatok"
                 BMITEXT.innerText = ""
             }
