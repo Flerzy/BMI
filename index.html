@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI calculator</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .container{
+            width: 500px;
+            height: 400px;
+            background-color: rgb(10, 10, 67);
+            margin: 0 auto;
+        }
+        h1{
+            text-align: center;
+            color: white;
+        }
+        label{
+            color: rgb(63, 63, 255);
+        }
+        .inputok{
+            width: 80%;
+            height: 40%;
+            margin: 0 auto;
+        }
+        .buttonok{
+            width: 80%;
+            height: 10%;
+            margin: 0 auto;
+        }
+        input{
+            width: 80%;
+            height: 20%;
+            margin-top: 5%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI calculator</h1>
+        <div class="inputok">
+            <label for="Magasság">Height</label>
+            <input id="height" type="number" name="Magasság" placeholder="Height(cm)"><br>
+            <label for="Súly">Weight</label>
+            <input id="weight" type="number" name="Súly" placeholder="Weight(kg)"><br>
+
+        </div>
+        <div class="buttonok" onclick="fire(event.target)">
+                <button id="calc">Calculate</button>
+                <button id="clear">Clear</button>
+        </div>
+        <div class="eredmeny">
+            <p id="BMI"></p>
+            <p id="kateg"></p>
+        </div>
+    </div>
+    <script>
+        const categ = (a,b) =>{
+            let BMI = a/((b/100)**2)
+
+        }
+        const fire = (func) =>{
+            let weight = document.querySelector("#weight")
+            let height = document.querySelector("#height")
+            if(func == document.querySelector(".buttonok")){
+                return
+            }
+            if (func.innerText == "Clear"){
+                weight.value = ""
+                height.value = ""
+            }
+            else if(func.innerText = "Calculate"){
+                let weightval  =+ weight.value
+                let heightval  =+ height.value
+                categ(weightval,heightval)
+            }
+        }
+    </script>
+</body>
+</html>
